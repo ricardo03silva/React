@@ -2,8 +2,6 @@ import Card from '../UI/Card';
 import classes from './UsersList.module.css';
 
 const UsersList = ({ users, onDeleteUser }) => {
-    // ({ users, onDeleteUser }) : destructuring the props element
-    // the same as (props) and then props.users...
     return (
         <Card className={classes.users}>
             <ul>
