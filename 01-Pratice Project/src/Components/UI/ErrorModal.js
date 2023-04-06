@@ -1,19 +1,23 @@
 import Button from './Button';
+import Card from './Card';
 import classes from './ErrorModal.module.css';
 
-const ErrorModal = (props) => {
+const ErrorModal = ({ title, message, onHideError }) => {
     return (
-        <div className="modal" overlayClassName="backdrop">
-            <div className="header">
-                <h2>Error</h2>
-            </div>
-            <div className="content">
-                <p>Some error message</p>
-            </div>
-            <div className="actions">
-                <Button>Button1</Button>
-                <Button>Button2</Button>
-            </div>
+        <div className={classes.backdrop} onClick={onHideError}>
+            <Card className={classes.modal}>
+                <header className={classes.header}>
+                    <h2>{title}</h2>
+                </header>
+                <div className={classes.content}>
+                    <p>{message}</p>
+                </div>
+                <footer className={classes.actions}>
+                    <Button type="button" onClick={onHideError}>
+                        Ok
+                    </Button>
+                </footer>
+            </Card>
         </div>
     );
 };
