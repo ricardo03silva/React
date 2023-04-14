@@ -16,6 +16,7 @@ npm start
 
 Section3 is the first React App of the Course
 Section1 and Section2 were ignored, just theory lectures
+01-Pratice Project is about Section8
 
 # Git Commands
 
@@ -26,3 +27,12 @@ git push -u origin main
 
 git log --all
 git switch nameOfTheBranch
+
+# Notes of lectures
+
+Stateless components: doesn't have any internal state
+Statefull: has internal state
+
+Props can be passed normally or destructured
+(props) OR
+({name, name2}) //new in React18
