@@ -11,24 +11,27 @@ function App() {
     const [error, setError] = useState(null);
 
     const fetchMoviesHandler = useCallback(async () => {
-        console.log('OK');
         setIsLoading(true);
         setError(null);
         try {
-            const resp = await fetch('https://swapi.dev/api/films/');
+            const resp = await fetch('https://react-78ebb-default-rtdb.europe-west1.firebasedatabase.app/movies.json');
             if (!resp.ok) {
                 throw new Error(`Error ${resp.status}`);
             } else {
                 const data = await resp.json();
-                const transformedResult = data.results.map((el) => {
-                    return {
-                        id: el.episode_id,
-                        title: el.title,
-                        releaseDate: el.release_date,
-                        openingText: el.opening_crawl,
-                    };
-                });
-                setMovies(transformedResult);
+
+                let loadedMovies = [];
+
+                for (const key in data) {
+                    loadedMovies.push({
+                        id: key,
+                        title: data[key].title,
+                        openingText: data[key].openingText,
+                        releaseDate: data[key].releaseDate,
+                    });
+                }
+                console.log(loadedMovies);
+                setMovies(loadedMovies);
             }
         } catch (err) {
             setError(err.message);
@@ -41,9 +44,17 @@ function App() {
         fetchMoviesHandler();
     }, [fetchMoviesHandler]);
 
-    function addMovieHandler(movie) {
-        console.log(movie);
-    }
+    const addMovieHandler = async (movie) => {
+        const response = await fetch('https://react-78ebb-default-rtdb.europe-west1.firebasedatabase.app/movies.json', {
+            method: 'POST',
+            body: JSON.stringify(movie),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        const data = await response.json();
+        console.log(data);
+    };
 
     let content = 'Found No Movies';
     if (!isLoading && movies.length > 0) {
