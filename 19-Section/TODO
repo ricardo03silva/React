@@ -1,9 +1,0 @@
-Add more items
-Add Products to cart
-If Product exists add quantity
-Add/Remove quantity in the cart
-MyCart button (on header) to toggle (show/hide) the shopping cart
-Update cart button with number of items
-
-Redux Toolkit
-Multiple slices

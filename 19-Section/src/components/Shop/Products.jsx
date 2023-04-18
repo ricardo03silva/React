@@ -1,40 +1,30 @@
 import ProductItem from './ProductItem';
 import classes from './Products.module.css';
 
-const items = [
+const PRODUCTS = [
     {
-        id: 1,
+        key: 1,
+        qt: 0,
         title: 'Product1',
         price: 6,
-        description: 'Product Description',
+        total: 0,
     },
     {
-        id: 2,
+        key: 2,
+        qt: 0,
         title: 'Product2',
         price: 2.45,
-        description: 'Product Description',
-    },
-    {
-        id: 3,
-        title: 'Product3',
-        price: 8.3,
-        description: 'Product Description',
-    },
-    {
-        id: 4,
-        title: 'Product4',
-        price: 6.3,
-        description: 'Product Description',
+        total: 0,
     },
 ];
 
-const Products = (props) => {
+const Products = () => {
     return (
         <section className={classes.products}>
             <h2>Buy your favorite products</h2>
             <ul>
-                {items.map((el) => {
-                    return <ProductItem key={el.id} title={el.title} price={el.price} description={el.description} />;
+                {PRODUCTS.map((el) => {
+                    return <ProductItem key={el.key} item={el} />;
                 })}
             </ul>
         </section>
